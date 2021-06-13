@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'pgsql:host=127.0.0.1;dbname=rental',
-	'hostname' => 'localhost',
-	'username' => 'postgres',
-	'password' => '',
-	'database' => '',
+	'dsn'	=> '',
+	'hostname' => 'ec2-54-224-194-214.compute-1.amazonaws.com',
+	'username' => 'mkzomqvoorcctm',
+	'password' => '336710df80f3c61d389832894cf834ef66adf7537d5ec93eb006c34d4e4af784',
+	'database' => 'd905u7h969c47o',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
