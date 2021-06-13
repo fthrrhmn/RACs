@@ -1,0 +1,66 @@
+CREATE DATABASE rental;
+\c rental
+
+CREATE TYPE status_u AS ENUM ('Admin', 'Karyawan');
+CREATE TYPE jns_b AS ENUM ('Debit', 'Cash');
+CREATE TYPE jK AS ENUM ('P', 'L');
+
+CREATE TABLE users(
+id_u SERIAL NOT NULL PRIMARY KEY,
+nm_u varchar(50) NOT NULL,
+almt_u varchar(100) NOT NULL,
+telp_u varchar(25) NOT NULL,
+jk_u jk NOT NULL,
+ktp_u varchar(50) NOT NULL,
+foto_u varchar(100),
+user_u varchar(25) NOT NULL,
+pass_u TEXT NOT NULL,
+status_u status_u NOT NULL
+);
+
+CREATE TABLE customer(
+id_c SERIAL NOT NULL PRIMARY KEY,
+nm_c varchar(50) NOT NULL,
+almt_c varchar(100) NOT NULL,
+telp_c varchar(25) NOT NULL,
+jk_c jk NOT NULL,
+ktp_c varchar(50) NOT NULL,
+foto_c varchar(100),
+user_c varchar(25) NOT NULL,
+pass_c TEXT NOT NULL
+);
+
+CREATE TABLE mobil(
+id_m SERIAL NOT NULL PRIMARY KEY,
+nm_m varchar(50) NOT NULL,
+tarif INT NOT NULL,
+plat varchar(25) NOT NULL,
+merk varchar(25) NOT NULL,
+kapasitas INT NOT NULL,
+foto_m varchar(100),
+stok INT NOT NULL,
+tambahan TEXT
+);
+
+CREATE TABLE sewa(
+id_s SERIAL NOT NULL PRIMARY KEY,
+tgl_s DATE NOT NULL,
+awal DATE NOT NULL,
+akhir DATE NOT NULL,
+total INT NOT NULL,
+status_s Varchar(50) NOT NULL,
+id_c INT NOT NULL,
+id_m INT NOT NULL,
+FOREIGN KEY (id_c) REFERENCES customer (id_c),
+FOREIGN KEY (id_m) REFERENCES mobil (id_m)
+);
+
+CREATE TABLE bayar(
+id_b SERIAL NOT NULL PRIMARY KEY,
+jum varchar(50) NOT NULL,
+tgl_b DATE NOT NULL,
+jns_b jns_b NOT NULL,
+foto_b varchar(100),
+id_s INT NOT NULL,
+FOREIGN KEY (id_s) REFERENCES sewa (id_s)
+);
