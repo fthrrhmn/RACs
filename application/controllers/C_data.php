@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class C_data extends CI_Controller {
 
 	function __construct(){
-		parent::__construct();
+		//parent::__construct();
 		$this->load->helper('url');
 	}
 
